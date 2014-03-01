@@ -31,11 +31,29 @@ Puppet::Type.newtype(:rz_policy) do
   end
 
   newparam(:hostname) do
-
+    desc 'hostname'
   end
 
   newparam(:root_password) do
     desc 'root password'
+  end
+
+  newparam(:bootproto) do
+    desc 'management network boot protocol'
+    newvalues(:dhcp, :static)
+    defaultto(:dhcp)
+  end
+
+  newparam(:ip) do
+    desc 'management network ip address (only for static bootproto)'
+  end
+
+  newparam(:gateway) do
+    desc 'management network gateway (only for static bootproto)'
+  end
+
+  newparam(:netmask) do
+    desc 'management network netmask (only for static bootproto)'
   end
 
   newparam(:max_count) do
